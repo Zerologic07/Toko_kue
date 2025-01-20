@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nia Cookies - Nastar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Selamat Datang di Nia Cookies</h1>
+        <p>Kami menyajikan kue nastar berkualitas premium dengan rasa terbaik!</p>
+    </header>
+    <main>
+        <section class="product">
+            <h2>Nastar Premium</h2>
+            <img src="{{ url_for('static', filename='images.jpeg') }}" alt="Nastar Premium">
+            <p>Harga: <strong>Rp50.000</strong></p>
+            <form id="orderForm">
+                <label for="name">Nama:</label>
+                <input type="text" id="name" name="name" required><br><br>
+                <label for="address">Alamat:</label>
+                <textarea id="address" name="address" required></textarea><br><br>
+                <a href="https://wa.me/6285697706418?text=Halo%20Nia%20Cookies,%20saya%20ingin%20memesan%20Nastar%20Premium." target="_blank">
+                    <button>Pesan Sekarang</button>
+                </a>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Nia Cookies. Semua Hak Dilindungi.</p>
+    </footer>
+    <script>
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Mencegah reload halaman
+            const name = document.getElementById('name').value;
+            const address = document.getElementById('address').value;
+            const message = `Halo Nia Cookies, saya ${name} ingin memesan Nastar Premium. Alamat saya: ${address}.`;
+            const whatsappUrl = `https://wa.me/6285697706418?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank'); // Membuka link di tab baru
+        });
+    </script>
+</body>
+</html>
